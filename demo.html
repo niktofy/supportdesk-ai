@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurora Home — demo store with SupportDesk AI</title>
+<style>
+  *{box-sizing:border-box;margin:0;}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#1e2430;background:#fff;}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;
+    border-bottom:1px solid #eef0f4;}
+  nav b{font-size:18px;}
+  nav div a{margin-left:22px;color:#5a6275;text-decoration:none;font-size:14px;}
+  .hero{padding:70px 40px;max-width:900px;}
+  .hero h1{font-size:40px;line-height:1.15;margin-bottom:14px;}
+  .hero p{color:#5a6275;font-size:17px;max-width:520px;line-height:1.6;}
+  .hero button{margin-top:22px;background:#6C5CE7;color:#fff;border:none;border-radius:10px;
+    padding:13px 26px;font-size:15px;cursor:pointer;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;
+    padding:0 40px 60px;max-width:1000px;}
+  .card{border:1px solid #eef0f4;border-radius:14px;padding:18px;}
+  .card .ph{height:120px;border-radius:10px;background:linear-gradient(135deg,#e8e6fb,#d5f0ea);margin-bottom:12px;}
+  .card b{font-size:14.5px;}
+  .card p{color:#8a90a0;font-size:13px;margin-top:4px;}
+</style>
+</head>
+<body>
+<nav><b>Aurora Home</b><div><a href="#">Shop</a><a href="#">About</a><a href="#">Contact</a></div></nav>
+<section class="hero">
+  <h1>Furniture that feels like a deep breath.</h1>
+  <p>This is a demo storefront showing the SupportDesk AI widget in action — click the chat bubble in the corner and ask about shipping, returns or payments.</p>
+  <button>Shop the collection</button>
+</section>
+<section class="cards">
+  <div class="card"><div class="ph"></div><b>Oslo Lounge Chair</b><p>€349</p></div>
+  <div class="card"><div class="ph"></div><b>Mist Side Table</b><p>€129</p></div>
+  <div class="card"><div class="ph"></div><b>Cloud Sofa 3-seat</b><p>€899</p></div>
+  <div class="card"><div class="ph"></div><b>Ember Floor Lamp</b><p>€159</p></div>
+</section>
+
+<script>
+  window.SupportDesk = {
+    endpoint: "http://localhost:8787/chat",
+    title: "Aurora Home Support",
+    accent: "#6C5CE7",
+    greeting: "Hi! I'm Aurora's assistant. Ask me about shipping, returns, payments or product care."
+  };
+</script>
+<script src="widget.js" defer></script>
+</body>
+</html>
