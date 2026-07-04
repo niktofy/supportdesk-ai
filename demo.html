@@ -3,46 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurora Home — demo store with SupportDesk AI</title>
+<title>Aurora Home · Furniture that feels like a deep breath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --ink:#22271F; --soft:#6B7263; --cream:#FAF8F3; --line:#E9E4D8;
+    --green:#1F6F54; --green-dark:#175843; --sand:#EFE9DC;
+  }
   *{box-sizing:border-box;margin:0;}
-  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#1e2430;background:#fff;}
-  nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;
-    border-bottom:1px solid #eef0f4;}
-  nav b{font-size:18px;}
-  nav div a{margin-left:22px;color:#5a6275;text-decoration:none;font-size:14px;}
-  .hero{padding:70px 40px;max-width:900px;}
-  .hero h1{font-size:40px;line-height:1.15;margin-bottom:14px;}
-  .hero p{color:#5a6275;font-size:17px;max-width:520px;line-height:1.6;}
-  .hero button{margin-top:22px;background:#6C5CE7;color:#fff;border:none;border-radius:10px;
-    padding:13px 26px;font-size:15px;cursor:pointer;}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;
-    padding:0 40px 60px;max-width:1000px;}
-  .card{border:1px solid #eef0f4;border-radius:14px;padding:18px;}
-  .card .ph{height:120px;border-radius:10px;background:linear-gradient(135deg,#e8e6fb,#d5f0ea);margin-bottom:12px;}
-  .card b{font-size:14.5px;}
-  .card p{color:#8a90a0;font-size:13px;margin-top:4px;}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);}
+  .serif{font-family:'Fraunces',serif;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  /* nav */
+  nav{border-bottom:1px solid var(--line);background:var(--cream);position:sticky;top:0;z-index:10;}
+  .nav-in{display:flex;justify-content:space-between;align-items:center;padding:18px 0;}
+  .logo{font-family:'Fraunces',serif;font-size:21px;font-weight:600;letter-spacing:.01em;}
+  .logo i{font-style:normal;color:var(--green);}
+  .links a{margin-left:26px;color:var(--soft);text-decoration:none;font-size:14px;}
+  .links a:hover{color:var(--ink);}
+  .cart{background:var(--ink);color:#fff;border-radius:999px;font-size:13px;padding:8px 16px;margin-left:26px;text-decoration:none;}
+  /* hero */
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:64px 0 56px;}
+  .kicker{display:inline-block;background:var(--sand);color:var(--green-dark);font-size:12px;
+    font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:18px;}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1.08;margin-bottom:18px;}
+  .hero p{color:var(--soft);font-size:16.5px;line-height:1.65;max-width:440px;margin-bottom:26px;}
+  .cta{display:inline-block;background:var(--green);color:#fff;text-decoration:none;
+    border-radius:12px;padding:14px 28px;font-size:15px;font-weight:600;}
+  .cta:hover{background:var(--green-dark);}
+  .cta2{display:inline-block;color:var(--ink);text-decoration:none;font-size:15px;font-weight:600;margin-left:20px;border-bottom:2px solid var(--line);padding-bottom:2px;}
+  .hero .ph{border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -28px rgba(34,39,31,.35);}
+  .hero .ph img{width:100%;height:420px;object-fit:cover;display:block;}
+  /* benefits */
+  .bene{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:8px 0 48px;}
+  .b{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;gap:12px;align-items:center;}
+  .b b{font-size:13.5px;display:block;}
+  .b span{font-size:12.5px;color:var(--soft);}
+  .b .ic{width:38px;height:38px;border-radius:10px;background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:17px;flex:none;}
+  /* products */
+  .sec-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:22px;}
+  .sec-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:30px;}
+  .sec-head a{color:var(--green);font-size:14px;text-decoration:none;font-weight:600;}
+  .prods{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-bottom:70px;}
+  @media(max-width:900px){.prods{grid-template-columns:repeat(2,1fr);}.hero{grid-template-columns:1fr;}.bene{grid-template-columns:1fr;}}
+  .p{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:box-shadow .2s, transform .2s;}
+  .p:hover{box-shadow:0 16px 40px -20px rgba(34,39,31,.3);transform:translateY(-2px);}
+  .p img{width:100%;height:210px;object-fit:cover;display:block;}
+  .p .in{padding:14px 16px 16px;}
+  .p b{font-size:14.5px;display:block;}
+  .stars{color:#D9A441;font-size:12px;margin:5px 0 7px;letter-spacing:1px;}
+  .stars span{color:var(--soft);font-size:12px;letter-spacing:0;margin-left:5px;}
+  .rowp{display:flex;justify-content:space-between;align-items:center;}
+  .price{font-weight:600;font-size:16px;}
+  .add{background:var(--sand);border:none;color:var(--green-dark);font-weight:600;font-size:12.5px;
+    padding:8px 13px;border-radius:9px;cursor:pointer;}
+  .add:hover{background:var(--green);color:#fff;}
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--soft);font-size:13px;text-align:center;}
 </style>
 </head>
 <body>
-<nav><b>Aurora Home</b><div><a href="#">Shop</a><a href="#">About</a><a href="#">Contact</a></div></nav>
-<section class="hero">
-  <h1>Furniture that feels like a deep breath.</h1>
-  <p>This is a demo storefront showing the SupportDesk AI widget in action — click the chat bubble in the corner and ask about shipping, returns or payments.</p>
-  <button>Shop the collection</button>
-</section>
-<section class="cards">
-  <div class="card"><div class="ph"></div><b>Oslo Lounge Chair</b><p>€349</p></div>
-  <div class="card"><div class="ph"></div><b>Mist Side Table</b><p>€129</p></div>
-  <div class="card"><div class="ph"></div><b>Cloud Sofa 3-seat</b><p>€899</p></div>
-  <div class="card"><div class="ph"></div><b>Ember Floor Lamp</b><p>€159</p></div>
-</section>
+
+<nav><div class="wrap nav-in">
+  <div class="logo">Aurora <i>Home</i></div>
+  <div class="links">
+    <a href="#">Living</a><a href="#">Bedroom</a><a href="#">Lighting</a><a href="#">Sale</a>
+    <a href="#" class="cart">Cart · 2</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <span class="kicker">New collection · Spring 26</span>
+      <h1>Furniture that feels like a deep breath.</h1>
+      <p>Honest materials, calm shapes and pieces made to be lived with for decades.
+         Designed in Copenhagen, delivered across Europe.</p>
+      <a class="cta" href="#">Shop the collection</a>
+      <a class="cta2" href="#">Our story</a>
+    </div>
+    <div class="ph"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=80&auto=format&fit=crop" alt="Living room with calm modern furniture"></div>
+  </section>
+
+  <section class="bene">
+    <div class="b"><div class="ic">🚚</div><div><b>Free shipping over €50</b><span>3 to 5 business days in Europe</span></div></div>
+    <div class="b"><div class="ic">↩️</div><div><b>30-day returns</b><span>No questions asked</span></div></div>
+    <div class="b"><div class="ic">🛡️</div><div><b>2-year warranty</b><span>On every single piece</span></div></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Bestsellers</h2><a href="#">View all →</a></div>
+    <div class="prods">
+      <div class="p"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80&auto=format&fit=crop" alt="Cloud three-seat sofa">
+        <div class="in"><b>Cloud Sofa · 3-seat</b>
+          <div class="stars">★★★★★<span>4.9 (212)</span></div>
+          <div class="rowp"><span class="price">€899</span><button class="add">Add to cart</button></div></div></div>
+      <div class="p"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80&auto=format&fit=crop" alt="Oslo lounge chair with side table">
+        <div class="in"><b>Oslo Lounge Chair</b>
+          <div class="stars">★★★★★<span>4.8 (167)</span></div>
+          <div class="rowp"><span class="price">€349</span><button class="add">Add to cart</button></div></div></div>
+      <div class="p"><img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&q=80&auto=format&fit=crop" alt="Ember leather armchair">
+        <div class="in"><b>Ember Armchair</b>
+          <div class="stars">★★★★☆<span>4.6 (98)</span></div>
+          <div class="rowp"><span class="price">€459</span><button class="add">Add to cart</button></div></div></div>
+      <div class="p"><img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80&auto=format&fit=crop" alt="Mist floor lamp">
+        <div class="in"><b>Mist Floor Lamp</b>
+          <div class="stars">★★★★★<span>4.9 (143)</span></div>
+          <div class="rowp"><span class="price">€159</span><button class="add">Add to cart</button></div></div></div>
+    </div>
+  </section>
+</div>
+
+<footer>Aurora Home · demo storefront for the SupportDesk AI widget · try the chat bubble in the corner</footer>
 
 <script>
   window.SupportDesk = {
     endpoint: "http://localhost:8787/chat",
     title: "Aurora Home Support",
-    accent: "#6C5CE7",
+    accent: "#1F6F54",
     greeting: "Hi! I'm Aurora's assistant. Ask me about shipping, returns, payments or product care."
   };
 </script>

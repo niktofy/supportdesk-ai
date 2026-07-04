@@ -9,7 +9,7 @@ An embeddable customer-support chatbot that answers **from your own docs** — s
 - Drop your FAQ / policies as markdown files into `kb/`
 - The server indexes every section (TF-IDF) and retrieves the best match for each question
 - Answers cite their source (`kb/shipping.md — Delivery times`) so customers can trust them
-- **Optional AI mode:** set `ANTHROPIC_API_KEY` and Claude composes the answer, strictly constrained to the retrieved context — with automatic fallback to retrieval mode if the API is down
+- **Optional AI mode:** set an LLM API key and the AI composes the answer, strictly constrained to the retrieved context — with automatic fallback to retrieval mode if the API is down
 
 ## Quick start
 
@@ -38,7 +38,7 @@ The widget is a single JS file: floating bubble, typing indicator, source citati
 
 ## Why retrieval-first
 
-Pure-LLM support bots hallucinate policies and prices. SupportDesk retrieves the answer from *your* knowledge base first — the AI (when enabled) only rephrases grounded context. Cheap, safe, auditable.
+Pure-LLM support bots hallucinate policies and prices. SupportDesk retrieves the answer from *your* knowledge base first — the AI mode (when enabled) only rephrases grounded context. Cheap, safe, auditable.
 
 ---
 
